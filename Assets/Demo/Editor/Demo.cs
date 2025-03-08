@@ -32,7 +32,7 @@ public static class Demo
     private const string HasSentConsentEventKey = "OVRTelemetry.HasSentConsentEvent";
     private const string TelemetryEnabledKey = "OVRTelemetry.TelemetryEnabled";
     private const string EmptyScenePath = "Assets/Scenes/Empty.unity";
-    private const string FinalScenePath = "Assets/Scenes/Paintball.unity";
+    private const string FinalScenePath = "Assets/Scenes/MRDrawingDemo.unity";
 
     static Demo()
     {

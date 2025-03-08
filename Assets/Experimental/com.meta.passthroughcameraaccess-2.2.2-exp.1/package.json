@@ -1,0 +1,37 @@
+{
+  "name": "com.meta.passthroughcameraaccess",
+  "displayName": "Meta Passthrough Camera Access (Partner Experimental)",
+  "version": "2.2.2-exp.1",
+  "unity": "2022.3",
+  "description": "This package provides access to raw image data from the headset sensors to your Unity application using WebCamTexture object.",
+  "author": {
+    "name": "Meta Platforms, Inc.",
+    "url": "https://developer.oculus.com/"
+  },
+  "dependencies": {
+    "com.meta.xr.mrutilitykit": "71.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "CameraViewer",
+      "description": "Show how to use WebCamTexture object with Quest3 device using C#/Unity.",
+      "path": "Samples~/CameraViewer"
+    },
+    {
+      "displayName": "BrightnessEstimation",
+      "description": "Show how to use camera data to estimate the current light brightness in the room.",
+      "path": "Samples~/BrightnessEstimation"
+    },
+    {
+      "displayName": "CameraToWorld",
+      "description": "Show how to use camera intrinsics and extrinsics data to transform 2D camera image coordinates into 3D position in world.",
+      "path": "Samples~/CameraToWorld"
+    }
+  ],
+  "keywords": [
+    "passthrough",
+    "camera",
+    "core",
+    "sensor"
+  ]
+}

@@ -755,7 +755,8 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: OVR_INTERNAL_CODE
+    Android: OVR_INTERNAL_CODE;ISDK_OPENXR_HAND
+    Standalone: ISDK_OPENXR_HAND
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -869,11 +870,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 111e9281-ae42-4bba-a2a0-202e71562c8c
+  cloudProjectId: 0958921b-66d3-4a20-a056-9ee2e0597575
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Colors
-  organizationId: connectunityworkshopguest
+  projectName: MR Canvas Painting
+  organizationId: dilmerv_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
