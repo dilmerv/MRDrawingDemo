@@ -20,7 +20,6 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
         markerPhysics = GetComponent<Rigidbody>();
         watcher = StartCoroutine(WatchMarker());
         markerRenderer = GetComponent<Renderer>();
-        markerRenderer.enabled = false;
         initialOffset = Quaternion.Inverse(originalAreaTransform.rotation) * transform.rotation;
     }
     

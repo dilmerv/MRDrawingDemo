@@ -12,6 +12,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     [SerializeField] private Transform raycastAnchor;
     [SerializeField] private OVRInput.RawButton grabButton = OVRInput.RawButton.RIndexTrigger | OVRInput.RawButton.RHandTrigger;
     [SerializeField] private OVRInput.RawAxis2D moveAxis = OVRInput.RawAxis2D.RThumbstick;
+    [SerializeField] private OVRInput.RawButton selectionToggleButton = OVRInput.RawButton.B;
     [SerializeField] private Transform panel;
     [SerializeField] private GameObject panelGlow;
     [SerializeField] private LineRenderer raycastVisualizationLine;
@@ -29,7 +30,8 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     private Pose? environmentPose;
     private EnvironmentRaycastHitStatus currentEnvHitStatus;
     private OVRSpatialAnchor spatialAnchor;
-
+    private bool toggleSelectionActive;
+    
     private IEnumerator Start()
     {
         // Wait until headset starts tracking
@@ -48,11 +50,11 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         
         if (IsHost)
         {
-            // Place the panel in front of the user
-            var position = centerEyeAnchor.position + centerEyeAnchor.forward;
-            var forward = Vector3.ProjectOnPlane(position - centerEyeAnchor.position, Vector3.up).normalized;
-            panel.position = position;
-            panel.rotation = Quaternion.LookRotation(forward);
+            // // Place the panel in front of the user
+            // var position = centerEyeAnchor.position + centerEyeAnchor.forward;
+            // var forward = Vector3.ProjectOnPlane(position - centerEyeAnchor.position, Vector3.up).normalized;
+            // panel.position = position;
+            // panel.rotation = Quaternion.LookRotation(forward);
 
             // Create the OVRSpatialAnchor and make it a parent of the panel.
             // This will prevent the panel front drifting after headset lock/unlock.
@@ -64,10 +66,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     
     private void Update()
     {
-        bool isUsingHands  = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
-        if (DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected() 
-            || !IsHost
-            || isUsingHands)
+        if(!IsPanelSelectionAllowed())
         {
             raycastVisualizationLine.enabled = false;
             raycastVisualizationNormal.gameObject.SetActive(false);
@@ -80,7 +79,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
             targetPose = null;
             return;
         }
-        
+
         VisualizeRaycast();
         
         if (isGrabbing)
@@ -122,6 +121,20 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
             }
         }
         AnimatePanelPose();
+    }
+
+    private bool IsPanelSelectionAllowed()
+    {
+        if (OVRInput.GetDown(selectionToggleButton))
+        {
+            toggleSelectionActive = !toggleSelectionActive;
+        }
+        
+        bool isUsingHands = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
+        return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
+               || !IsHost
+               || isUsingHands
+               || toggleSelectionActive);
     }
 
     private Ray GetRaycastRay()

@@ -104,7 +104,6 @@ public class ColorMarker : NetworkBehaviour
     [ClientRpc]
     private void StartNewLineClientRpc(Vector3 startPosition, Vector3 normal)
     {
-        //if (IsOwner) return; // Ignore for the original sender
         StartNewLine(startPosition, normal);
     }
     
@@ -127,8 +126,10 @@ public class ColorMarker : NetworkBehaviour
         lastLine.endWidth = endLineWidth;
         lastLine.alignment = LineAlignment.TransformZ;
         lastLine.positionCount = 1;
-        lastLine.numCornerVertices = cornerAndEndCaps;  // Smooths corners
-        lastLine.numCapVertices = cornerAndEndCaps;     // Smooths end caps
+        
+        // Smooths corners and caps
+        lastLine.numCornerVertices = cornerAndEndCaps;  
+        lastLine.numCapVertices = cornerAndEndCaps;
         lastLine.useWorldSpace = false;
         lineObj.transform.parent = canvas.transform;
         
