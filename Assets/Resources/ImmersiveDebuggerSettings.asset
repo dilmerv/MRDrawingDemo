@@ -12,16 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d75bea1662418ab5f9e0c22110bc09, type: 3}
   m_Name: ImmersiveDebuggerSettings
   m_EditorClassIdentifier: 
-  debugTypes:
-  - AssemblyName: Assembly-CSharp
-    DebugTypes:
-    - BallSpawner
-    - Paintball
-    - Splatter
-  - AssemblyName: Meta.XR.ImmersiveDebugger
-    DebugTypes:
-    - TestSceneUsage
-    - UIEditorSetup
+  debugTypes: []
   immersiveDebuggerEnabled: 0
   immersiveDebuggerDisplayAtStartup: 0
   immersiveDebuggerToggleDisplayButton: 2
@@ -29,20 +20,18 @@ MonoBehaviour:
   showConsole: 0
   followOverride: 1
   rotateOverride: 0
-  showInfoLog: 1
+  showInfoLog: 0
   showWarningLog: 1
   showErrorLog: 1
   collapsedIdenticalLogEntries: 0
   maximumNumberOfLogEntries: 1000
-  panelDistance: 0
+  panelDistance: 1
   createEventSystem: 1
   automaticLayerCullingUpdate: 1
   panelLayer: 20
   meshRendererLayer: 21
   overlayDepth: 10
-  inspectedDataEnabled: 0101
-  inspectedDataAssets:
-  - {fileID: 11400000, guid: 7d2b5c7a7c5e53542ab61e3e1f5a2785, type: 2}
-  - {fileID: 11400000, guid: 168f7a776bb65884397aab8376e40c7d, type: 2}
+  inspectedDataEnabled: 
+  inspectedDataAssets: []
   useCustomIntegrationConfig: 0
   customIntegrationConfigClassName: 

@@ -53,7 +53,7 @@ public static class Demo
     private static void ResetToEnd()
     {
         FixThings();
-        LoadPaintballScene();
+        LoadDemoScene();
         ResetSimulator();
         ResetImmersiveDebugger();
     }
@@ -96,7 +96,7 @@ public static class Demo
         EditorSceneManager.SaveScene(activeScene);
     }
 
-    private static void LoadPaintballScene()
+    private static void LoadDemoScene()
     {
         EditorSceneManager.OpenScene(FinalScenePath, OpenSceneMode.Single);
     }
@@ -110,7 +110,9 @@ public static class Demo
 
     private static void ResetImmersiveDebugger()
     {
-        //TODO fix this
-        //RuntimeSettings.Instance.ImmersiveDebuggerEnabled = false;
+        RuntimeSettings instance = ScriptableObject.CreateInstance<RuntimeSettings>();
+        string assetPath = "Assets/Resources/ImmersiveDebuggerSettings.asset";
+        AssetDatabase.CreateAsset(instance, assetPath);
+        AssetDatabase.SaveAssets();
     }
 }
