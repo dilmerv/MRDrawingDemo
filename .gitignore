@@ -75,3 +75,4 @@ crashlytics-build.properties
 
 .utmp/
 .vscode/
+.DS_Store

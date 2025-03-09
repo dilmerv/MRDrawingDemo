@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 
+using System.IO;
+using System.Xml.Linq;
 using Meta.XR.ImmersiveDebugger;
 using Meta.XR.Simulator.Editor;
 using UnityEngine;
@@ -33,6 +35,8 @@ public static class Demo
     private const string TelemetryEnabledKey = "OVRTelemetry.TelemetryEnabled";
     private const string EmptyScenePath = "Assets/Scenes/Empty.unity";
     private const string FinalScenePath = "Assets/Scenes/MRDrawingDemo.unity";
+    private const string AndroidManifestPath = "Plugins/Android/AndroidManifest.xml";
+    private static readonly string[] PermissionsToAppend = { "horizonos.permission.HEADSET_CAMERA"  };
 
     static Demo()
     {
@@ -65,15 +69,51 @@ public static class Demo
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.X86_64;
         QualitySettings.pixelLightCount = 10;
         PlayerSettings.graphicsJobs = true;
+        DeleteAndroidManifest();
     }
 
     private static void FixThings()
     {
-        PlayerSettings.graphicsJobs = false;
-        QualitySettings.pixelLightCount = 1;
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel32;
-        PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
         PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
+        PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
+        QualitySettings.pixelLightCount = 1;
+        PlayerSettings.graphicsJobs = false;
+        GenerateAndroidManifest();
+    }
+
+    
+    private static void DeleteAndroidManifest()
+    {
+        // clear out android manifest to trigger the rule
+        string androidManifestFile = Path.Combine(Application.dataPath, AndroidManifestPath);
+        if (File.Exists(androidManifestFile))
+            File.Delete(androidManifestFile);
+        if (File.Exists($"{androidManifestFile}.meta"))
+            File.Delete($"{androidManifestFile}.meta");
+        
+        // force unity to refresh assets to reflect deleting of file
+        AssetDatabase.Refresh();
+    }
+    
+    private static void GenerateAndroidManifest()
+    {
+        // re-generate android manifest & let the user know
+        OVRManifestPreprocessor.GenerateManifestForSubmission();
+        var androidManifestFile = Path.Combine(Application.dataPath, AndroidManifestPath);
+        XDocument xmlDoc = XDocument.Load(androidManifestFile);
+        XElement manifestElement = xmlDoc.Root;
+
+        foreach (var newPermission in PermissionsToAppend)
+        {
+            XElement newPermissionElement = new XElement("uses-permission",
+                new XAttribute(XNamespace.Get("http://schemas.android.com/apk/res/android") + "name", newPermission)
+            );
+            manifestElement?.Add(newPermissionElement);
+        }
+        xmlDoc.Save(androidManifestFile);
+        // force unity to refresh assets to reflect new permission(s)
+        AssetDatabase.Refresh();
     }
 
     private static void LoadAndResetEmptyScene()
