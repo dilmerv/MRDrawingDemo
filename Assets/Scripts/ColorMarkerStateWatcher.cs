@@ -41,7 +41,7 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void ChangeMarkerStateServerRpc(bool visible = true)
+    private void ChangeMarkerStateServerRpc(bool visible = true)
     {
         ChangeMarkerStateClientRpc(visible);
     }
@@ -55,12 +55,12 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
     private void ResetMarker(bool visible)
     {
         markerRenderer.enabled = visible;
-        if (visible) // only reset its transforms if it is visible
+        if (visible)
         {
             markerPhysics.isKinematic = true;
             transform.SetPositionAndRotation(originalAreaTransform.position, originalAreaTransform.rotation * initialOffset);
             markerPhysics.isKinematic = false;
-            markerPhysics.linearVelocity = Vector3.zero;
+            markerPhysics.velocity = Vector3.zero;
             markerPhysics.angularVelocity = Vector3.zero;
         }
     }
