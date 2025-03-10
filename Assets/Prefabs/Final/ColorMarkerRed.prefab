@@ -94,6 +94,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -128,8 +131,8 @@ Rigidbody:
   m_GameObject: {fileID: 1533733104458898323}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 0.2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -145,7 +148,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &8186640613567035253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +156,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533733104458898323}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 69c66c0ad62784090a26492782cf59ae, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -201,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1840916007
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 4233991637
+  InScenePlacedSourceGlobalObjectIdHash: 4108701531
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -1729,6 +1732,96 @@ MonoBehaviour:
           DisplayName: 
         memberName: sharedMaterials
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: allowGPUDrivenRendering
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: smallMeshCulling
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: rayTracingAccelerationStructureBuildFlags
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: rayTracingAccelerationStructureBuildFlagsOverride
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: isLOD0
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LODGroup
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -2288,6 +2381,81 @@ MonoBehaviour:
           DisplayName: 
         memberName: solverVelocityIterationCount
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PublishTransform
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: linearVelocity
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: linearDamping
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: angularDamping
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: worldInertiaTensorMatrix
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: UnityEngine.BoxCollider, UnityEngine.PhysicsModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -2531,6 +2699,21 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: material
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: UnityEngine.Collider, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: GeometryHolder
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Oculus.Interaction.Grabbable, Oculus.Interaction, Version=0.0.0.0,
@@ -4115,6 +4298,36 @@ MonoBehaviour:
           DisplayName: 
         memberName: m_ChildNetworkBehaviours
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PreviousOwnerId
+        _editorSelectedGizmoIndex: 0
     - enabled: 1
       typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       inspectedMembers:
@@ -5228,6 +5441,36 @@ MonoBehaviour:
           DisplayName: 
         memberName: endLineWidth
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: ColorMarkerStateWatcher, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -6206,6 +6449,36 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: NetworkVariableIndexesToResetSet
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Meta.XR.MultiplayerBlocks.Shared.TransferOwnershipOnSelect, Meta.XR.MultiplayerBlocks.Shared,
@@ -8210,6 +8483,36 @@ MonoBehaviour:
           DisplayName: 
         memberName: NetworkVariableIndexesToResetSet
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Meta.XR.MultiplayerBlocks.NGO.TransferOwnershipNGO, Meta.XR.MultiplayerBlocks.NGO,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -9023,6 +9326,36 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: NetworkVariableIndexesToResetSet
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Components,
@@ -10002,6 +10335,36 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: NetworkVariableIndexesToResetSet
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
 --- !u!1 &1614697030624714966
 GameObject:
