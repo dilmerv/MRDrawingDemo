@@ -8,12 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Empty.unity
     guid: 8549a8748ee0b43ecbc31262b0503ba3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MRDrawingDemo.unity
     guid: f8c316e4cc6446448bb09b17a10bc5fd
-  - enabled: 1
-    path: Assets/Samples/Meta MR Utility Kit/72.0.0/Environment Panel Placement (Beta)/EnvironmentPanelPlacement.unity
-    guid: 01a2198db44a25d44a3108875f7fd3d5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 19d3479ae27319044be822b1c22b1772, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0aa9daf79332f9e4e8c64fefcce9593a, type: 2}
+  m_UseUCBPForAssetBundles: 0
