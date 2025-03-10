@@ -424,7 +424,7 @@ PlayerSettings:
   - m_BuildTarget: LuminSupport
     m_GraphicsJobs: 0
   - m_BuildTarget: AndroidPlayer
-    m_GraphicsJobs: 1
+    m_GraphicsJobs: 0
   - m_BuildTarget: WebGLSupport
     m_GraphicsJobs: 0
   m_BuildTargetGraphicsJobMode:
@@ -858,11 +858,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 0958921b-66d3-4a20-a056-9ee2e0597575
+  cloudProjectId: f988049c-d01a-4da2-8704-91ea01aec0bb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: MR Canvas Painting
-  organizationId: dilmerv_unity
+  organizationId: dilmer
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

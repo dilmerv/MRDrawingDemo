@@ -5,7 +5,7 @@ using Meta.XR;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlacement>
+public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlacementStaging>
 {
     [SerializeField] private EnvironmentRaycastManager raycastManager;
     [SerializeField] private Transform centerEyeAnchor;
@@ -42,20 +42,12 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         }
         yield return null;
         enabled = true;
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
         
-        if (IsHost)
-        {
-            // Create the OVRSpatialAnchor and make it a parent of the panel.
-            // This will prevent the panel front drifting after headset lock/unlock.
-            spatialAnchor = new GameObject(nameof(OVRSpatialAnchor)).AddComponent<OVRSpatialAnchor>();
-            spatialAnchor.transform.SetPositionAndRotation(panel.position, panel.rotation);
-            panel.SetParent(spatialAnchor.transform);
-        }
+        // Create the OVRSpatialAnchor and make it a parent of the panel.
+        // This will prevent the panel front drifting after headset lock/unlock.
+        spatialAnchor = new GameObject(nameof(OVRSpatialAnchor)).AddComponent<OVRSpatialAnchor>();
+        spatialAnchor.transform.SetPositionAndRotation(panel.position, panel.rotation);
+        panel.SetParent(spatialAnchor.transform);
     }
     
     private void Update()
@@ -125,10 +117,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         }
         
         bool isUsingHands = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
-        return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
-               || !IsHost
-               || isUsingHands
-               || toggleSelectionActive);
+        return !(isUsingHands || toggleSelectionActive);
     }
 
     private Ray GetRaycastRay()
