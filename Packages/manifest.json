@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.all": "72.0.0",
+    "com.meta.xr.sdk.all": "74.0.0-relbranch.9",
     "com.unity.collab-proxy": "2.7.1",
     "com.unity.feature.development": "1.0.2",
     "com.unity.ide.rider": "3.0.31",
@@ -13,7 +13,9 @@
     "com.unity.timeline": "1.8.7",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.5",
-    "com.unity.xr.oculus": "4.5.0",
+    "com.unity.xr.management": "4.5.0",
+    "com.unity.xr.meta-openxr": "2.1.0",
+    "com.unity.xr.openxr": "1.14.1",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
@@ -47,5 +49,16 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": []
+  "scopedRegistries": [
+    {
+      "name": "Meta",
+      "scopes": [
+        "com.meta",
+        "com.oculus",
+        "com.protokit",
+        "com.thirdparty"
+      ],
+      "url": "https://npm.thefacebook.com/"
+    }
+  ]
 }
