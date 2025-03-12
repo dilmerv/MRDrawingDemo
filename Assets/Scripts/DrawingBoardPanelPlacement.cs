@@ -31,7 +31,21 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     private EnvironmentRaycastHitStatus currentEnvHitStatus;
     private OVRSpatialAnchor spatialAnchor;
     private bool toggleSelectionActive;
-    
+
+    public override void Awake()
+    {
+        // Depth API crashes Meta Link - Let's disable the components using it
+        base.Awake();
+#if UNITY_EDITOR
+        if (raycastManager != null)
+        {
+            Debug.LogWarning("DepthAPI is not supported with Meta Link. Disabling raycast & panel grab functionality.");
+            raycastManager.enabled = false;
+            enabled = false;
+        }
+#endif
+    }
+
     private IEnumerator Start()
     {
         // Wait until headset starts tracking
@@ -126,7 +140,6 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         
         bool isUsingHands = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
         return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
-               || !IsHost
                || isUsingHands
                || toggleSelectionActive);
     }

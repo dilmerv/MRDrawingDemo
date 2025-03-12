@@ -3414,6 +3414,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onSpatialAnchorsShareToGroupCompleted:
+    m_PersistentCalls:
+      m_Calls: []
   _onSharedSpatialAnchorsLoadCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -4775,11 +4778,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405818554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8affdff7ba47d892cc734baac9ac71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CustomTrackingSpace: {fileID: 0}
+  _cameraRig: {fileID: 970291321}
 --- !u!4 &405818556
 Transform:
   m_ObjectHideFlags: 0
@@ -7964,6 +7969,9 @@ MonoBehaviour:
   passthroughLayerResumed:
     m_PersistentCalls:
       m_Calls: []
+  overrideBlendFactors: 0
+  srcBlendFactor: 2
+  dstBlendFactor: 3
   colorMapEditorType_: 0
   colorMapEditorGradient:
     serializedVersion: 2
@@ -10717,6 +10725,32 @@ MonoBehaviour:
   launchSimultaneousHandsControllersOnStartup: 0
   isInsightPassthroughEnabled: 1
   shouldBoundaryVisibilityBeSuppressed: 0
+  isImmersiveDebuggerEnabled: 0
+  expandFeatureFidelitySystemPropertySheet: 0
+  featureFidelitySystemActivated: 0
+  handTrackingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  keyboardTrackingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  eyeTrackingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  faceTrackingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  bodyTrackingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  passthroughFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  gaseBasedFoveatedRenderingFeatureFidelityGroup:
+    targetFeatureEnabled: -1
+    targetFeatureFidelity: -1
+  handTrackingFeatureEnabled: 0
+  handTrackingFeatureFidelity: 0
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
@@ -10735,6 +10769,8 @@ MonoBehaviour:
   SimultaneousHandsAndControllersEnabled: 0
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
+  _readOnlyBodyFusionHandPosesEnabled: 0
+  bodyFusionHandPosesEnabled: 0
   dynamicResolutionVersion: 1
 --- !u!114 &970291321
 MonoBehaviour:
@@ -24906,6 +24942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawingBoardPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3715897039672239918, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24949,6 +24989,10 @@ PrefabInstance:
     - target: {fileID: 7221706392433953619, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4031453429
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: raycastAnchor
