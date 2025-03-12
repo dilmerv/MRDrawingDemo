@@ -51,6 +51,7 @@ public static class Demo
         LoadAndResetEmptyScene();
         ResetSimulator();
         ResetImmersiveDebugger();
+        Debug.ClearDeveloperConsole();
     }
 
     [MenuItem("Meta/Demo/Reset to End", false, 3001)]
@@ -60,6 +61,7 @@ public static class Demo
         LoadDemoScene();
         ResetSimulator();
         ResetImmersiveDebugger();
+        Debug.ClearDeveloperConsole();
     }
 
     private static void BreakThings()
