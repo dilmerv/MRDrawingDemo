@@ -51,7 +51,7 @@ public static class Demo
         LoadAndResetEmptyScene();
         ResetSimulator();
         ResetImmersiveDebugger();
-        Debug.ClearDeveloperConsole();
+        ClearLogConsole();
     }
 
     [MenuItem("Meta/Demo/Reset to End", false, 3001)]
@@ -61,7 +61,8 @@ public static class Demo
         LoadDemoScene();
         ResetSimulator();
         ResetImmersiveDebugger();
-        Debug.ClearDeveloperConsole();
+        ClearLogConsole();
+
     }
 
     private static void BreakThings()
@@ -156,5 +157,13 @@ public static class Demo
         string assetPath = "Assets/Resources/ImmersiveDebuggerSettings.asset";
         AssetDatabase.CreateAsset(instance, assetPath);
         AssetDatabase.SaveAssets();
+    }
+    
+    private static void ClearLogConsole()
+    {
+        System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(typeof(SceneView));
+        System.Type type = assembly.GetType("UnityEditor.LogEntries");
+        System.Reflection.MethodInfo method = type.GetMethod("Clear");
+        if (method != null) method.Invoke(new object(), null);
     }
 }
