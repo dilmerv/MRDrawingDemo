@@ -4764,6 +4764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 405818556}
   - component: {fileID: 405818555}
+  - component: {fileID: 405818557}
   m_Layer: 0
   m_Name: EnvironmentRaycastManager
   m_TagString: Untagged
@@ -4778,7 +4779,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405818554}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8affdff7ba47d892cc734baac9ac71, type: 3}
   m_Name: 
@@ -4800,6 +4801,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405818557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405818554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca061122d2885964ea043e3cdb5a1170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 405818555}
+  reason: Depth API is not supported with Meta Link
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6675,6 +6690,17 @@ Transform:
   - {fileID: 1941195228}
   m_Father: {fileID: 849514534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &588225168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+  m_PrefabInstance: {fileID: 8383313549312517849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965738708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8130b88b7159c1545afba75c35cc4511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596357522
 GameObject:
   m_ObjectHideFlags: 0
@@ -22825,6 +22851,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 719148216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1965738708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+  m_PrefabInstance: {fileID: 8383313549312517849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965738712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965738708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca061122d2885964ea043e3cdb5a1170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 588225168}
+  reason: Depth API is not supported with Meta Link
 --- !u!1 &1966713137
 GameObject:
   m_ObjectHideFlags: 0
@@ -24992,7 +25037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: raycastAnchor
@@ -25009,7 +25054,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1965738712}
   m_SourcePrefab: {fileID: 100100000, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

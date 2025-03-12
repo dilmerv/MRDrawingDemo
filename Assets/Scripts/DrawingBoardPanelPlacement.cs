@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,20 +32,6 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     private EnvironmentRaycastHitStatus currentEnvHitStatus;
     private OVRSpatialAnchor spatialAnchor;
     private bool toggleSelectionActive;
-
-    public override void Awake()
-    {
-        // Depth API crashes Meta Link - Let's disable the components using it
-        base.Awake();
-#if UNITY_EDITOR
-        if (raycastManager != null)
-        {
-            Debug.LogWarning("DepthAPI is not supported with Meta Link. Disabling raycast & panel grab functionality.");
-            raycastManager.enabled = false;
-            enabled = false;
-        }
-#endif
-    }
 
     private IEnumerator Start()
     {
