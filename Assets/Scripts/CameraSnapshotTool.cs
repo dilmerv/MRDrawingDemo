@@ -18,6 +18,14 @@ public class CameraSnapshotTool : MonoBehaviour
         isPassthroughCameraReady = true;
     }
     
+    private void OnValidate()
+    {
+        if(passthroughCameraManager == null)
+            passthroughCameraManager = FindAnyObjectByType<PassthroughCameraManager>();
+        if(cameraCanvas == null)
+            cameraCanvas = FindAnyObjectByType<CameraToWorldCameraCanvas>();
+    }
+    
     void Update()
     {
         if (!isPassthroughCameraReady) return;

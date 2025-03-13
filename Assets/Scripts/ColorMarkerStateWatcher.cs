@@ -57,6 +57,7 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
         if (visible)
         {
             markerPhysics.isKinematic = true;
+            // this is needed because we're moving the panel from time to time
             transform.SetPositionAndRotation(originalAreaTransform.position, originalAreaTransform.rotation * initialOffset);
             markerPhysics.isKinematic = false;
             markerPhysics.linearVelocity = Vector3.zero;

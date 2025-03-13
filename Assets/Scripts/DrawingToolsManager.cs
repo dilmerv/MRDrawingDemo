@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Oculus.Interaction;
@@ -10,19 +11,25 @@ public class DrawingToolsManager : SingletonNetwork<DrawingToolsManager>
     
     private readonly List<Grabbable> grabComponents = new();
     private int sortingLayerValue;
-    
+
+    private void OnValidate()
+    {
+        markers = FindObjectsByType<ColorMarker>(FindObjectsSortMode.InstanceID).ToArray();
+    }
+
     private void Start()
     {
         foreach (var marker in markers)
         {
             grabComponents.Add(marker.GetComponent<Grabbable>());
         }
-        grabComponents.Add(cameraSnapshotTool.GetComponent<Grabbable>());
+        if(cameraSnapshotTool != null)
+            grabComponents.Add(cameraSnapshotTool.GetComponent<Grabbable>());
     }
 
     public bool IsAnyToolSelected()
     {
-        return grabComponents.Any(g => g.SelectingPointsCount > 0);
+        return grabComponents?.Any(g => g.SelectingPointsCount > 0) ?? false;
     }
 
     public int GetNewSortingLayer()

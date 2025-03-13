@@ -425,8 +425,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6980961954438335732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.341, y: 1.056, z: 0.476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.92}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 416472522
+  GlobalObjectIdHash: 1199958445
   InScenePlacedSourceGlobalObjectIdHash: 1199958445
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -637,7 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5074b3142480a942900af6eb1559089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawingBoardContainer: {fileID: 0}
   originalAreaTransform: {fileID: 0}
   minYPosition: 0
   frequency: 1
@@ -721,6 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8173e4ba580074ebec38b552e3214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _category: 
   registry:
     handles:
     - enabled: 0
@@ -5858,6 +5858,51 @@ MonoBehaviour:
           DisplayName: 
         memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnValidate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Reset
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnEnable
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: ColorMarkerStateWatcher, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -6975,6 +7020,21 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: _transferOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Meta.XR.MultiplayerBlocks.Shared.TransferOwnershipOnSelect, Meta.XR.MultiplayerBlocks.Shared,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Transfer
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Meta.XR.MultiplayerBlocks.NGO.ClientNetworkTransform, Meta.XR.MultiplayerBlocks.NGO,
