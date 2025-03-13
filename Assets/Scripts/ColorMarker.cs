@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Oculus.Interaction;
 using Unity.Netcode;
@@ -6,16 +7,16 @@ using UnityEngine;
 public class ColorMarker : NetworkBehaviour
 {
     [SerializeField] private Transform canvas;
-    [SerializeField] private float brushRayDistance = 2.0f;
+    [SerializeField] private float brushRayDistance = 0.1f;
     [SerializeField] private LayerMask layersToInclude;
     [SerializeField] private Grabbable objectGrabbable;
     [SerializeField] private AudioClip drawingAudioClip;
-    [SerializeField] private float drawingInterval = 0.1f;
-    [SerializeField] private float drawingPointMinDistance = 0.1f;
+    [SerializeField] private float drawingInterval = 0.025f;
+    [SerializeField] private float drawingPointMinDistance = 0.005f;
     [SerializeField] private int cornerAndEndCaps = 10;
     [SerializeField] private Color color = Color.red;
-    [SerializeField] private float startLineWidth = 0.001f;
-    [SerializeField] private float endLineWidth = 0.002f;
+    [SerializeField] private float startLineWidth = 0.01f;
+    [SerializeField] private float endLineWidth = 0.02f;
     
     private AudioSource drawingAudioSource;
     private LineRenderer lastLine;
@@ -30,6 +31,16 @@ public class ColorMarker : NetworkBehaviour
         networkLinePositions = new NetworkList<Vector3>();
     }
     
+    private void OnValidate()
+    {
+        var grabbable = GetComponentInParent<Grabbable>();
+        if (grabbable == null)
+        {
+            grabbable = GetComponentInChildren<Grabbable>();
+        }
+        objectGrabbable = grabbable;
+    }
+
     void Start()
     {
         drawingAudioSource = gameObject.AddComponent<AudioSource>();

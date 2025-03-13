@@ -4754,67 +4754,17 @@ Transform:
   - {fileID: 2798891}
   m_Father: {fileID: 2013918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &405818554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 405818556}
-  - component: {fileID: 405818555}
-  - component: {fileID: 405818557}
-  m_Layer: 0
-  m_Name: EnvironmentRaycastManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &405818555
+--- !u!114 &405818555 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8345678772533257339, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+  m_PrefabInstance: {fileID: 1684074428400731580}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405818554}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8affdff7ba47d892cc734baac9ac71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomTrackingSpace: {fileID: 0}
-  _cameraRig: {fileID: 970291321}
---- !u!4 &405818556
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405818554}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &405818557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405818554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca061122d2885964ea043e3cdb5a1170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 405818555}
-  reason: Depth API is not supported with Meta Link
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -24814,6 +24764,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11cfe111c10a39845bd142c2ce72b55e, type: 3}
+--- !u!1001 &1684074428400731580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432293445034261887, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460248146314126381, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
+      propertyPath: m_Name
+      value: EnvironmentRaycastManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 809b18bb6ff9de54f84196377e7621cd, type: 3}
 --- !u!1001 &1769908919750303162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25072,7 +25079,7 @@ SceneRoots:
   - {fileID: 1097808336087230504}
   - {fileID: 1668346972013471491}
   - {fileID: 263104876}
-  - {fileID: 405818556}
+  - {fileID: 1684074428400731580}
   - {fileID: 765895602}
   - {fileID: 286045444}
   - {fileID: 1103835045}

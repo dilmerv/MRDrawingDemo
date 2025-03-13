@@ -61,7 +61,6 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
             transform.SetPositionAndRotation(originalAreaTransform.position, originalAreaTransform.rotation * initialOffset);
             markerPhysics.isKinematic = false;
             markerPhysics.linearVelocity = Vector3.zero;
-            markerPhysics.angularVelocity = Vector3.zero;
         }
     }
 

@@ -27,7 +27,7 @@ MonoBehaviour:
   virtualKeyboardSupport: 0
   planeDetectionSupport: 1
   assistedSceneCapture: 0
-  colocationSessionSupport: 0
+  colocationSessionSupport: 1
   sceneSupport: 2
   boundaryVisibilitySupport: 0
   disableBackups: 1
