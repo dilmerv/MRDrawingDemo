@@ -39,6 +39,10 @@ public class ColorMarker : NetworkBehaviour
             grabbable = GetComponentInChildren<Grabbable>();
         }
         objectGrabbable = grabbable;
+        var drawingCanvas = GameObject.Find("DrawingCanvas");
+        canvas ??= drawingCanvas?.transform;
+        layersToInclude = LayerMask.GetMask("DrawingCanvas");
+        drawingAudioClip = Resources.Load<AudioClip>("Audio/MarkerDrawing");
     }
 
     void Start()

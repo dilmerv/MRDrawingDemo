@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ColorMarkerStateWatcher : NetworkBehaviour
 {
-    [SerializeField] private Transform drawingBoardContainer;
     [SerializeField] private Transform originalAreaTransform;
     [SerializeField] private float minYPosition;
     [SerializeField] private float frequency;
@@ -22,7 +21,7 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
         markerRenderer = GetComponent<Renderer>();
         initialOffset = Quaternion.Inverse(originalAreaTransform.rotation) * transform.rotation;
     }
-    
+ 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();

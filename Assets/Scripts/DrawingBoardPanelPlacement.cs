@@ -119,6 +119,9 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
 
     private bool IsPanelSelectionAllowed()
     {
+#if UNITY_EDITOR
+        return false;
+#endif
         if (OVRInput.GetDown(selectionToggleButton))
         {
             toggleSelectionActive = !toggleSelectionActive;
