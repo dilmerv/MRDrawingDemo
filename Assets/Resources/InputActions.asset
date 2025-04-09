@@ -12,11 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8922a6ca86889d84f8371a29d37b6dc8, type: 3}
   m_Name: InputActions
   m_EditorClassIdentifier: 
-  InputActionDefinitions:
-  - InteractionProfile: 
-    InputActionDefinitions:
-    - ActionName: 
-      Type: 2
-      Paths:
-      - 
+  InputActionDefinitions: []
   InputActionSets: []

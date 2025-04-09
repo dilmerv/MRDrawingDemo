@@ -1,101 +1,101 @@
 {
   "dependencies": {
     "com.meta.xr.mrutilitykit": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
+        "com.meta.xr.sdk.core": "74.0.1",
+        "com.unity.textmeshpro": "3.0.6",
         "com.unity.ai.navigation": "1.1.4",
-        "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.meta.xr.sdk.core": "74.0.0-relbranch.9",
-        "com.unity.textmeshpro": "3.0.6"
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.all": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.audio": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.interaction": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.interaction.ovr": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.platform": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.core": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.voice": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.haptics": "74.0.0-relbranch.9",
-        "com.meta.xr.simulator": "74.0.0-relbranch.9",
-        "com.meta.xr.mrutilitykit": "74.0.0-relbranch.9"
+        "com.meta.xr.sdk.core": "74.0.1",
+        "com.meta.xr.sdk.audio": "74.0.0",
+        "com.meta.xr.sdk.voice": "74.0.0",
+        "com.meta.xr.simulator": "74.0.0",
+        "com.meta.xr.sdk.haptics": "74.0.1",
+        "com.meta.xr.mrutilitykit": "74.0.1",
+        "com.meta.xr.sdk.platform": "74.0.0",
+        "com.meta.xr.sdk.interaction": "74.0.1",
+        "com.meta.xr.sdk.interaction.ovr": "74.0.2"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.audio": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.core": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.haptics": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.core": "74.0.0-relbranch.9"
+        "com.meta.xr.sdk.core": "74.0.1"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.textmeshpro": "3.0.6",
-        "com.unity.ugui": "1.0.0"
+        "com.unity.ugui": "1.0.0",
+        "com.unity.textmeshpro": "3.0.6"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction.ovr": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.interaction": "74.0.0-relbranch.9",
-        "com.meta.xr.sdk.core": "72.0.0-mainline.27"
+        "com.meta.xr.sdk.core": "74.0.1",
+        "com.meta.xr.sdk.interaction": "74.0.1"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.platform": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.voice": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.meta.xr.simulator": {
-      "version": "74.0.0-relbranch.9",
+      "version": "74.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0"
       },
-      "url": "https://npm.thefacebook.com"
+      "url": "https://packages.unity.com"
     },
     "com.unity.ai.navigation": {
       "version": "2.0.6",
@@ -145,9 +145,8 @@
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.feature.development": {
       "version": "1.0.2",
@@ -158,7 +157,7 @@
         "com.unity.ide.rider": "3.0.34",
         "com.unity.editorcoroutines": "1.0.0",
         "com.unity.performance.profile-analyzer": "1.2.3",
-        "com.unity.test-framework": "1.4.6",
+        "com.unity.test-framework": "1.5.1",
         "com.unity.testtools.codecoverage": "1.2.6"
       }
     },
@@ -284,7 +283,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.authentication": {
-      "version": "3.4.0",
+      "version": "3.4.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -382,15 +381,14 @@
       }
     },
     "com.unity.test-framework": {
-      "version": "1.4.6",
+      "version": "1.5.1",
       "depth": 1,
-      "source": "registry",
+      "source": "builtin",
       "dependencies": {
         "com.unity.ext.nunit": "2.0.3",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "com.unity.test-framework.performance": {
       "version": "3.0.3",
@@ -453,7 +451,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.9.5",
+      "version": "1.9.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -485,7 +483,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.oculus": {
-      "version": "4.5.0",
+      "version": "4.5.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
