@@ -7,3 +7,8 @@ This project was showcased at GDC 2025 and demonstrates how to build a multiplay
 - A Unity account is required 
 - Add this package to your Unity Assets: [Meta XR All-in-One SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657) (_this will make it available under Unity > Window > Package Manager > My Assets_)
 - If you have a Mac, be sure to set up the Meta XR Simulator by following these [steps](https://github.com/Oculus-VR/homebrew-repo/blob/main/meta-xr-simulator.md). This is not required for PC users.
+
+|**Project Demos**|
+|:-:|
+|Colocated MR Drawing Demo|
+|<img src="https://github.com/dilmerv/MRDrawingDemo/blob/master/Docs/images/Demo.gif" width="560">|
