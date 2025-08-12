@@ -1,16 +1,17 @@
-using Meta.XR.PassthroughCamera;
+using PassthroughCameraSamples;
+using PassthroughCameraSamples.CameraToWorld;
 using UnityEngine;
 
 public class CameraSnapshotTool : MonoBehaviour
 {
-    [SerializeField] private PassthroughCameraManager passthroughCameraManager;
+    [SerializeField] private WebCamTextureManager passthroughCameraManager;
     [SerializeField] private CameraToWorldCameraCanvas cameraCanvas;
     private bool snapshotTaken;
     private bool isPassthroughCameraReady;
     
     void Start()
     {
-        PassthroughCameraAccessPermissionHelper.OnPermissionSuccess += CallbackPermissionSuccess;
+        PassthroughCameraPermissions.OnPermissionSuccess += CallbackPermissionSuccess;
     }
     
     private void CallbackPermissionSuccess()
@@ -21,7 +22,7 @@ public class CameraSnapshotTool : MonoBehaviour
     private void OnValidate()
     {
         if(passthroughCameraManager == null)
-            passthroughCameraManager = FindAnyObjectByType<PassthroughCameraManager>();
+            passthroughCameraManager = FindAnyObjectByType<WebCamTextureManager>();
         if(cameraCanvas == null)
             cameraCanvas = FindAnyObjectByType<CameraToWorldCameraCanvas>();
     }

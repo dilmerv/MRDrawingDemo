@@ -12,7 +12,9 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     [SerializeField] private Transform raycastAnchor;
     [SerializeField] private OVRInput.RawButton grabButton = OVRInput.RawButton.RIndexTrigger | OVRInput.RawButton.RHandTrigger;
     [SerializeField] private OVRInput.RawAxis2D moveAxis = OVRInput.RawAxis2D.RThumbstick;
+#pragma warning disable CS0414
     [SerializeField] private OVRInput.RawButton selectionToggleButton = OVRInput.RawButton.B;
+#pragma warning restore CS0414
     [SerializeField] private Transform panel;
     [SerializeField] private GameObject panelGlow;
     [SerializeField] private LineRenderer raycastVisualizationLine;
@@ -121,7 +123,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     {
 #if UNITY_EDITOR
         return false;
-#endif
+#else
         if (OVRInput.GetDown(selectionToggleButton))
         {
             toggleSelectionActive = !toggleSelectionActive;
@@ -131,6 +133,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
                || isUsingHands
                || toggleSelectionActive);
+#endif
     }
 
     private Ray GetRaycastRay()
