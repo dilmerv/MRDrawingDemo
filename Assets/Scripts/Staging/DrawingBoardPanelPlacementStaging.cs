@@ -216,6 +216,11 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
             float t = 1f - dampedAngle / angle;
             panel.rotation = Quaternion.SlerpUnclamped(panel.rotation, targetPose.Value.rotation, t);
         }
+
+        if(!isGrabbing)
+        {
+            onPanelGrabbedEnded?.Invoke();
+        }
     }
 
     private void VisualizeRaycast()
