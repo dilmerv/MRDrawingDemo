@@ -66,6 +66,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         {
             raycastVisualizationLine.enabled = false;
             raycastVisualizationNormal.gameObject.SetActive(false);
+            panelGlow.SetActive(false);
             return;
         }
             

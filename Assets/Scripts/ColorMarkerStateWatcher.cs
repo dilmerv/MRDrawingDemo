@@ -34,7 +34,6 @@ public class ColorMarkerStateWatcher : NetworkBehaviour
         
         DrawingBoardPanelPlacement.Instance.onPanelGrabbedEnded.AddListener(() =>
         {
-            ChangeMarkerStateServerRpc(true);
             onHold = false;
         });
     }

@@ -94,7 +94,7 @@ MonoBehaviour:
     - {x: 0.5820256, y: 0.0076851565, z: -0.07198955, w: 0.8099411}
     - {x: 0.35045758, y: -0.047032386, z: 0.012802409, w: 0.93530935}
   _ghostProvider: {fileID: 0}
-  _handGhostProvider: {fileID: 0}
+  _handGhostProvider: {fileID: 11400000, guid: 9b9df4f150839de48af887d742aabf53, type: 2}
   _ovrOffsetMode: 0
 --- !u!1 &1771223341141726863
 GameObject:
@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 3765008571269656003}
   - component: {fileID: 6899163839899557533}
   - component: {fileID: 5719638042591476324}
+  - component: {fileID: 8042635858372830857}
   - component: {fileID: 4648450804259245517}
   - component: {fileID: 5001659113420214896}
   - component: {fileID: 8776542755611976933}
@@ -142,7 +143,7 @@ Transform:
   - {fileID: 8264240431990409436}
   - {fileID: 590099878840340712}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 8.46, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2924964605513167913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e9b4b64f-1c7e-4dff-8f3c-ce409bdc3951
-  instanceId: d562d621-4228-4481-a447-379f1873f333
+  instanceId: 31454fde-bdfa-4179-9daf-bbb9b6747bd9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: d5c83ff6-47e4-4c98-acdd-041d4686912f
@@ -227,7 +228,7 @@ Rigidbody:
   m_GameObject: {fileID: 1771223341141726863}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 10
+  m_Drag: 2
   m_AngularDrag: 0.2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -288,6 +289,29 @@ MonoBehaviour:
   _rigidbody: {fileID: 3765008571269656003}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
+--- !u!114 &8042635858372830857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771223341141726863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorFilters: []
+  _maxInteractors: -1
+  _maxSelectingInteractors: -1
+  _data: {fileID: 0}
+  _pointableElement: {fileID: 5719638042591476324}
+  _rigidbody: {fileID: 3765008571269656003}
+  _grabSource: {fileID: 0}
+  _useClosestPointAsGrabSource: 0
+  _releaseDistance: 0
+  _resetGrabOnGrabsUpdated: 1
+  _physicsGrabbable: {fileID: 0}
 --- !u!114 &4648450804259245517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,15 +324,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3826614489
+  GlobalObjectIdHash: 324497637
   InScenePlacedSourceGlobalObjectIdHash: 3826614489
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &5001659113420214896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,12 +349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97379f9b2894219b3e17a4c2bbe769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   canvas: {fileID: 0}
   brushRayDistance: 0.1
   layersToInclude:
     serializedVersion: 2
     m_Bits: 64
-  objectGrabbable: {fileID: 5719638042591476324}
   drawingAudioClip: {fileID: 8300000, guid: 5a3bf813a82b4cf4887d038475818cf4, type: 3}
   drawingInterval: 0.025
   drawingPointMinDistance: 0.005
@@ -334,6 +362,8 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 1}
   startLineWidth: 0.01
   endLineWidth: 0.02
+  grabOffsetDistance: 0.025
+  grabOffsetDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &8776542755611976933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5074b3142480a942900af6eb1559089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   originalAreaTransform: {fileID: 0}
   minYPosition: 0
   frequency: 1
@@ -374,6 +405,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405ed07ae7c26a141bac0d303d0a347a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -391,6 +436,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
 --- !u!114 &6342959948785168271
@@ -405,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c591ff029c5744fab32050a9c97f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &7158236989388967288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!114 &5133995126101897442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4424,6 +4476,411 @@ MonoBehaviour:
           DisplayName: 
         memberName: PreviousOwnerId
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnApplicationStart
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SendOwnershipStatusUpdate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ResetOnDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkTransforms
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkRigidbodies
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: CurrentParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasRemoteObservers
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnershipDistributable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnershipSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnershipLocked
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnershipTransferable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnershipRequestRequired
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsRequestInProgress
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_PrefabStage
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_PrefabAsset
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_PrefabInstance
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_DebugPrefabIdGeneration
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: DeferredDespawnTick
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnDeferredDespawnComplete
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Ownership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnOwnershipPermissionsFailure
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnOwnershipRequested
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnOwnershipRequestResponse
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncOwnerTransformWhenParented
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AllowOwnerToParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkObject, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AuthorityAppliedParenting
+        _editorSelectedGizmoIndex: 0
     - enabled: 1
       typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       inspectedMembers:
@@ -5612,6 +6069,261 @@ MonoBehaviour:
           DisplayName: 
         memberName: OnEnable
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadDirtyAndCheckOwnerWriteIsDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ShowTopMostFoldoutHeaderGroup
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogSentVariableUpdateMessage
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AlignMarkerWithController
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnDestroy
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: grabOffsetDistance
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: grabOffsetDirection
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: grabInteractable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: wasGrabbed
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: currentGrabbingController
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: grabbable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: ColorMarker, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: markerGrabbed
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: ColorMarkerStateWatcher, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -6620,6 +7332,126 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: MarkOwnerReadVariablesDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadDirtyAndCheckOwnerWriteIsDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ShowTopMostFoldoutHeaderGroup
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogSentVariableUpdateMessage
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Meta.XR.MultiplayerBlocks.Shared.TransferOwnershipOnSelect, Meta.XR.MultiplayerBlocks.Shared,
@@ -8669,6 +9501,1986 @@ MonoBehaviour:
           DisplayName: 
         memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdatePositionSlerp
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ApplySynchronization
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnTransformUpdated
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ApplyAuthoritativeState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnBeforeUpdateTransformState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AxisChangedDeltaPositionCheck
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NonAuthorityFinalizeSynchronization
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ApplyPlayerTransformState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Awake
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: CleanUpOnDestroyOrDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnDestroy
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ResetInterpolatedStateToCurrentAuthoritativeState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Initialize
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AdjustForChangeInTransformSpace
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnLostOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnGainedOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateInterpolation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnUpdate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ResetFixedTimeDelta
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnFixedUpdate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateTransformState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RegisterForTickSynchronization
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeVariables
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeRpcs
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HideInterpolateValue
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SynchronizePosition
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SynchronizeRotation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SynchronizeScale
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionInLocalSpace
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotationInLocalSpace
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: CanCommitToTransform
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalAuthoritativeNetworkState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OutboundState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkTransformExpanded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: CurrentTick
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AutoOwnerAuthorityTickOffset
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousPositionInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotationInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousRotationInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ScaleInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousScaleInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousPositionLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionMaxInterpolationTime
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotationLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousRotationLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotationMaxInterpolationTime
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ScaleLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousScaleLerpSmoothing
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ScaleMaxInterpolationTime
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AuthorityMode
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: TickSyncChildren
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionThresholdDefault
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotAngleThresholdDefault
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ScaleThresholdDefault
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnClientRequestChange
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: TrackByStateId
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseUnreliableDeltas
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncPositionX
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncPositionY
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncPositionZ
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncRotAngleX
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncRotAngleY
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncRotAngleZ
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncScaleX
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncScaleY
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SyncScaleZ
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PositionThreshold
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RotAngleThreshold
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ScaleThreshold
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseQuaternionSynchronization
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseQuaternionCompression
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseHalfFloatPrecision
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InLocalSpace
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SwitchTransformSpaceWhenParented
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Interpolate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SlerpPosition
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_CachedNetworkManager
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_LocalAuthoritativeNetworkState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_ClientRpcParams
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_ClientIds
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PositionInterpolator
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_ScaleInterpolator
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_RotationInterpolator
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_OldState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_InternalCurrentPosition
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TargetPosition
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_InternalCurrentScale
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TargetScale
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_InternalCurrentRotation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TargetRotation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_UseRigidbodyForMotion
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_NetworkRigidbodyInternal
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_AddLogEntry
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_HalfPositionState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SynchronizeState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_DeltaSynch
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogMotion
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogStateUpdate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AssignDefaultInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: DefaultInterpolationType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_HalfFloatTargetTickOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_CachedNetworkObject
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousCurrentParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousPreviousParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsNested
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_ParentedChildren
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_IsFirstNetworkTransform
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_CurrentNetworkObjectParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_PreviousNetworkObjectParent
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_NetworkTransformTickRegistration
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_FixedTimeFrameDelta
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_DeltaFixedUpdateCached
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InboundState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_OutboundMessage
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_NetworkTickRegistration
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InterpolationBufferTickOffset
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: s_TickSynchPosition
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkTransform, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_NextTickSync
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadDirtyAndCheckOwnerWriteIsDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ShowTopMostFoldoutHeaderGroup
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogSentVariableUpdateMessage
+        _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Meta.XR.MultiplayerBlocks.NGO.TransferOwnershipNGO, Meta.XR.MultiplayerBlocks.NGO,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -9512,6 +12324,126 @@ MonoBehaviour:
           Description: 
           DisplayName: 
         memberName: MarkOwnerReadVariablesDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadDirtyAndCheckOwnerWriteIsDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ShowTopMostFoldoutHeaderGroup
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogSentVariableUpdateMessage
         _editorSelectedGizmoIndex: 0
     - enabled: 0
       typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Components,
@@ -10522,6 +13454,2475 @@ MonoBehaviour:
           DisplayName: 
         memberName: MarkOwnerReadVariablesDirty
         _editorSelectedGizmoIndex: 0
+    - enabled: 0
+      typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Runtime,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      inspectedMembers:
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Awake
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeVariables
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeRpcs
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbody, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Rigidbody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ApplyCurrentTransform
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SetOriginalInterpolation2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SetOriginalInterpolation3D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SetOriginalInterpolation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WakeIfSleeping2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WakeIfSleeping3D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WakeIfSleeping
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SleepRigidbody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PostSetIsKinematic
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ResetInterpolation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateOwnershipAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnFixedJointCreated
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnFixedJoint2DCreated
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RemoveFromParentBody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: DetatchFromFixedJoint2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: DetatchFromFixedJoint3D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: DetachFromFixedJoint
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeVariables
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeRpcs
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_IsRigidbody2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_InternalRigidbody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_InternalRigidbody2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RigidbodyType
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: FixedJoint2D
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: FixedJoint
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkRigidbodyBaseExpanded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseRigidBodyForMotion
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AutoUpdateKinematicState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: AutoSetKinematicOnDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_IsAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkTransform
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TickFrequency
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TickRate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_OriginalInterpolation
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_QuaternionCheck
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkRigidbodyConnections
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ParentBody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_FixedJoint2DUsingGravity
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_OriginalGravitySetting
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.Components.NetworkRigidbodyBase, Unity.Netcode.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_OriginalGravityScale
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkProperties
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnInSceneObjectsSpawned
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnNetworkDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: VisibleOnNetworkSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkPostSpawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkSessionSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InSceneNetworkObjectsSpawned
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnNetworkDespawn
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnGainedOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnGainedOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnLostOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InternalOnLostOwnership
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeVariables
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __initializeRpcs
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InitializeVariables
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PreNetworkVariableWrite
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PreVariableUpdate
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateNetworkVariableOnOwnershipChanged
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MarkOwnerReadDirtyAndCheckOwnerWriteIsDirty
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnDestroy
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkManager
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: RpcTarget
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsLocalPlayer
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsServer
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasAuthority
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LocalClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSessionOwner
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ServerIsHost
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsClient
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsHost
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsOwnedByServer
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: IsSpawned
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkObject
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: HasNetworkObject
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkObjectId
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkBehaviourId
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OwnerClientId
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_TargetIdBeingSynchronized
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ShowTopMostFoldoutHeaderGroup
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __rpc_func_table
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __rpc_name_table
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: __rpc_exec_stage
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: k_RpcMessageDefaultSize
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: k_RpcMessageMaximumSize
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_NetworkObject
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkBehaviourIdCache
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_VarInit
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_DeliveryMappedNetworkVariableIndices
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: m_DeliveryTypesForNetworkVariableGroups
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkVariableFields
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkVariableIndexesToReset
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: NetworkVariableIndexesToResetSet
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Unity.Netcode.NetworkBehaviour, Unity.Netcode.Runtime, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: LogSentVariableUpdateMessage
+        _editorSelectedGizmoIndex: 0
+    - enabled: 0
+      typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      inspectedMembers:
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Awake
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Start
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Colliders
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Rigidbody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UseClosestPointAsGrabSource
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ReleaseDistance
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: ResetGrabOnGrabsUpdated
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _colliders
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _rigidbody
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _grabSource
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _useClosestPointAsGrabSource
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _releaseDistance
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _resetGrabOnGrabsUpdated
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _physicsGrabbable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.GrabInteractable, Oculus.Interaction, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _grabRegistry
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.PointerInteractable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Awake
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.PointerInteractable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Start
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.PointerInteractable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: PointableElement
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.PointerInteractable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _pointableElement
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: UpdateInteractableState
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Enable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Disable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Awake
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Start
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnEnable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: OnDisable
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Data
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MaxInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: MaxSelectingInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InteractorViews
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SelectingInteractorViews
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WhenInteractorAdded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WhenInteractorRemoved
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WhenSelectingInteractorAdded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: WhenSelectingInteractorRemoved
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: State
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Registry
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: Interactors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: SelectingInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _interactorFilters
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: InteractorFilters
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _maxInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _maxSelectingInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _data
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _started
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _interactors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _selectingInteractors
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _state
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _whenInteractorAdded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _whenInteractorRemoved
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _whenSelectingInteractorAdded
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _whenSelectingInteractorRemoved
+        _editorSelectedGizmoIndex: 0
+      - enabled: 0
+        typeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.GrabInteractor,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[Oculus.Interaction.GrabInteractable,
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          Oculus.Interaction, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        attribute:
+          GizmoType: 0
+          ShowGizmoByDefault: 0
+          Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          Tweakable: 1
+          Min: 0
+          Max: 1
+          Category: 
+          Description: 
+          DisplayName: 
+        memberName: _registry
+        _editorSelectedGizmoIndex: 0
 --- !u!1 &2137890197090139037
 GameObject:
   m_ObjectHideFlags: 0
@@ -10629,7 +16030,6 @@ GameObject:
   - component: {fileID: 8264240431990409436}
   - component: {fileID: 6698902328582219534}
   - component: {fileID: 87886757125699353}
-  - component: {fileID: 6674526252113065102}
   m_Layer: 0
   m_Name: '[BuildingBlock] HandGrab'
   m_TagString: Untagged
@@ -10666,7 +16066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: ecf13b53-89cd-4675-b463-76425bab8b0a
+  instanceId: 36cd73a1-ba50-4447-adce-1a9004884582
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -10715,29 +16115,6 @@ MonoBehaviour:
   _handAligment: 1
   _handGrabPoses:
   - {fileID: 6534839705179383502}
---- !u!114 &6674526252113065102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238509530539915693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactorFilters: []
-  _maxInteractors: -1
-  _maxSelectingInteractors: -1
-  _data: {fileID: 0}
-  _pointableElement: {fileID: 5719638042591476324}
-  _rigidbody: {fileID: 3765008571269656003}
-  _grabSource: {fileID: 0}
-  _useClosestPointAsGrabSource: 0
-  _releaseDistance: 0
-  _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}
 --- !u!1 &6392979057478816843
 GameObject:
   m_ObjectHideFlags: 0

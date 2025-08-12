@@ -58,6 +58,7 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
         {
             raycastVisualizationLine.enabled = false;
             raycastVisualizationNormal.gameObject.SetActive(false);
+            panelGlow.SetActive(false);
             return;
         }
             

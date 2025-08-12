@@ -8,7 +8,6 @@ public class ColorMarker : NetworkBehaviour
     [SerializeField] private Transform canvas;
     [SerializeField] private float brushRayDistance = 0.1f;
     [SerializeField] private LayerMask layersToInclude;
-    [SerializeField] private Grabbable objectGrabbable;
     [SerializeField] private AudioClip drawingAudioClip;
     [SerializeField] private float drawingInterval = 0.025f;
     [SerializeField] private float drawingPointMinDistance = 0.005f;
@@ -17,11 +16,18 @@ public class ColorMarker : NetworkBehaviour
     [SerializeField] private float startLineWidth = 0.01f;
     [SerializeField] private float endLineWidth = 0.02f;
     
+    [SerializeField] private float grabOffsetDistance = 0.05f; // Distance to offset from controller
+    [SerializeField] private Vector3 grabOffsetDirection = Vector3.forward; // Direction to offset
+    
+    private GrabInteractable grabInteractable;
     private AudioSource drawingAudioSource;
     private LineRenderer lastLine;
     private readonly List<Vector3> linePositions = new ();
     private float lastDrawingTime;
     private bool drawing;
+    
+    private bool markerGrabbed;
+    private Transform currentGrabbingController;
     
     private NetworkList<Vector3> networkLinePositions;
     
@@ -32,12 +38,7 @@ public class ColorMarker : NetworkBehaviour
     
     private void OnValidate()
     {
-        var grabbable = GetComponentInParent<Grabbable>();
-        if (grabbable == null)
-        {
-            grabbable = GetComponentInChildren<Grabbable>();
-        }
-        objectGrabbable = grabbable;
+        grabInteractable = GetComponent<GrabInteractable>();
         var drawingCanvas = GameObject.Find("DrawingCanvas")?.transform;
         canvas = drawingCanvas?.transform;
         layersToInclude = LayerMask.GetMask("DrawingCanvas");
@@ -49,14 +50,61 @@ public class ColorMarker : NetworkBehaviour
         drawingAudioSource = gameObject.AddComponent<AudioSource>();
         drawingAudioSource.loop = true;
         drawingAudioSource.clip = drawingAudioClip;
+        
+        // Subscribe to grab events
+        if (grabInteractable != null)
+        {
+            grabInteractable.WhenSelectingInteractorAdded.Action += OnGrabbed;
+            grabInteractable.WhenSelectingInteractorRemoved.Action += OnReleased;
+        }
+    }
+    
+    private void OnGrabbed(GrabInteractor interactor)
+    {
+        markerGrabbed = true;
+        currentGrabbingController = interactor.gameObject.transform;
+        
+        // Align marker with controller direction and offset it
+        AlignMarkerWithController();
+    }
+    
+    private void OnReleased(GrabInteractor interactor)
+    {
+        markerGrabbed = false;
+        currentGrabbingController = null;
+    }
+    
+    private void AlignMarkerWithController()
+    {
+        if (currentGrabbingController == null) return;
+        
+        // Get controller forward direction
+        Vector3 controllerForward = currentGrabbingController.forward;
+        
+        // Calculate offset position to avoid collision
+        Vector3 offsetPosition = currentGrabbingController.position + 
+                                controllerForward * grabOffsetDistance;
+        
+        // Align marker with controller direction
+        Quaternion targetRotation = Quaternion.LookRotation(controllerForward);
+        
+        // Apply position and rotation
+        transform.position = offsetPosition;
+        transform.rotation = targetRotation;
     }
     
     void Update()
     {
+        // If grabbed, continuously update alignment
+        if (markerGrabbed && currentGrabbingController != null)
+        {
+            AlignMarkerWithController();
+        }
+        
         Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * brushRayDistance, Color.green);
         
-        if (objectGrabbable.SelectingPointsCount > 0 && 
+        if (markerGrabbed && 
             Physics.Raycast(ray, out RaycastHit hit, brushRayDistance, layersToInclude))
         {
             Vector3 hitPoint = hit.point;
@@ -155,5 +203,14 @@ public class ColorMarker : NetworkBehaviour
         linePositions.Clear();
         linePositions.Add(startPosition);
         lastLine.SetPosition(0, startPosition);
+    }
+
+    public override void OnDestroy()
+    {
+        if (grabInteractable != null)
+        {
+            grabInteractable.WhenSelectingInteractorAdded.Action -= OnGrabbed;
+            grabInteractable.WhenSelectingInteractorRemoved.Action -= OnReleased;
+        }
     }
 }
