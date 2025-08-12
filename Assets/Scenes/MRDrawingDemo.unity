@@ -6641,17 +6641,6 @@ Transform:
   - {fileID: 1941195228}
   m_Father: {fileID: 849514534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &588225168 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-  m_PrefabInstance: {fileID: 8383313549312517849}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965738708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8130b88b7159c1545afba75c35cc4511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &596357522
 GameObject:
   m_ObjectHideFlags: 0
@@ -22091,25 +22080,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 719148216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1965738708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-  m_PrefabInstance: {fileID: 8383313549312517849}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1965738712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965738708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca061122d2885964ea043e3cdb5a1170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 588225168}
-  reason: Depth API is not supported with Meta Link
 --- !u!1 &1966713137
 GameObject:
   m_ObjectHideFlags: 0
@@ -24406,17 +24376,9 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3363254983
       objectReference: {fileID: 0}
-    - target: {fileID: 1216313225973599669, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: SceneMigrationSynchronization
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_Name
       value: DrawingBoardPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3715897039672239918, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24458,29 +24420,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4584368209047058610, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4865651215268457072, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6510583422294307276, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7221706392433953619, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4031453429
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221706392433953619, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: SceneMigrationSynchronization
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: raycastAnchor
@@ -24497,10 +24439,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1965738712}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

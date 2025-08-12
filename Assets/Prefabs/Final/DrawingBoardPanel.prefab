@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 1216313225973599669}
   - component: {fileID: 8561181238703442586}
   - component: {fileID: 2838201726528604562}
+  - component: {fileID: 6597084381409304644}
   m_Layer: 0
   m_Name: DrawingBoardPanel
   m_TagString: Untagged
@@ -86,15 +87,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4269195345
+  GlobalObjectIdHash: 3363254983
   InScenePlacedSourceGlobalObjectIdHash: 2255119901
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &8561181238703442586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8130b88b7159c1545afba75c35cc4511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   raycastManager: {fileID: 0}
   centerEyeAnchor: {fileID: 0}
   raycastAnchor: {fileID: 0}
@@ -230,6 +236,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6597084381409304644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220456762148408595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca061122d2885964ea043e3cdb5a1170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8561181238703442586}
+  reason: Depth API is not supported with Meta Link
 --- !u!1 &1321675910620340954
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,9 +278,9 @@ Transform:
   m_GameObject: {fileID: 1321675910620340954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.45, z: 0.03}
-  m_LocalScale: {x: 0.2, y: 0.09, z: 0.2}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.3268, y: 0.442, z: 0.03}
+  m_LocalScale: {x: 0.4, y: 0.18, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6879766167237720716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,6 +566,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -563,6 +597,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
 --- !u!1 &4184843049115971452
@@ -1108,15 +1143,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4269195345
+  GlobalObjectIdHash: 4031453429
   InScenePlacedSourceGlobalObjectIdHash: 2255119901
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &5230570597097792297
 GameObject:
   m_ObjectHideFlags: 0
