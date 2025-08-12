@@ -101,7 +101,6 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
                     panel.SetParent(parent);
                 }
                 
-                onPanelGrabbedEnded?.Invoke();
             }
         }
         else
@@ -223,6 +222,11 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
             float dampedAngle = Mathf.SmoothDampAngle(angle, 0f, ref rotationVelocity, smoothTime);
             float t = 1f - dampedAngle / angle;
             panel.rotation = Quaternion.SlerpUnclamped(panel.rotation, targetPose.Value.rotation, t);
+        }
+        
+        if(!isGrabbing)
+        {
+            onPanelGrabbedEnded?.Invoke();
         }
     }
 

@@ -3453,6 +3453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NetworkManagerExpanded: 0
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 287413085}
@@ -3475,6 +3476,10 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 10
     EnableNetworkLogs: 1
+    NetworkTopology: 0
+    UseCMBService: 0
+    AutoSpawnPlayerPrefabClientSide: 1
+    NetworkProfilingMetrics: 1
     OldPrefabList: []
   RunInBackground: 1
   LogLevel: 1
@@ -8607,6 +8612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a5f1f6ec8c2074299327a65f3e3c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &792716560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8619,6 +8625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3081f290c5190bf4f91e9867aac316d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &792716561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8631,6 +8638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88f1365b06dffc45b5dc7587842a206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   anchorPrefab: {fileID: 1978002011806910258, guid: a6c7bad9126cbca4e92c7b76ea14ab33, type: 3}
   networkData: {fileID: 792716559}
   networkMessenger: {fileID: 792716560}
@@ -8648,13 +8656,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 1889180830
   InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &792716563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10219,7 +10231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useRecommendedMSAALevel: 1
   _monoscopic: 0
   _sharpenType: 0
   _enableDynamicResolution: 1
@@ -13897,6 +13908,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ovrCameraRig: {fileID: 970291321}
+  _leftHand: {fileID: 0}
+  _rightHand: {fileID: 0}
   _requireOvrHands: 1
 --- !u!114 &1315377425
 MonoBehaviour:
@@ -19227,6 +19240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9334420786731409b2bf965732d6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   playerNameTagPrefab: {fileID: 6612306959276078633, guid: e6e1b232a4f038c4684c307eb3088311, type: 3}
 --- !u!114 &1756144154
 MonoBehaviour:
@@ -19264,13 +19278,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 619580621
   InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &1756144156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24085,6 +24103,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 675618691
       objectReference: {fileID: 0}
+    - target: {fileID: 6650535251172548731, guid: 3971863c058f8aa4587bd46f49bb1b10, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7161994397324698484, guid: 3971863c058f8aa4587bd46f49bb1b10, type: 3}
       propertyPath: m_Name
       value: ColorMarkerYellow
@@ -24145,6 +24167,10 @@ PrefabInstance:
     - target: {fileID: 3907286345547880162, guid: 11cfe111c10a39845bd142c2ce72b55e, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 416472522
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907286345547880162, guid: 11cfe111c10a39845bd142c2ce72b55e, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5144870247611884954, guid: 11cfe111c10a39845bd142c2ce72b55e, type: 3}
       propertyPath: canvas
@@ -24280,6 +24306,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 4233991637
       objectReference: {fileID: 0}
+    - target: {fileID: 2279145611356293820, guid: 6ba98311072aed14bb00b89232b6415c, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7557882461210085100, guid: 6ba98311072aed14bb00b89232b6415c, type: 3}
       propertyPath: drawingBoardContainer
       value: 
@@ -24323,19 +24353,19 @@ PrefabInstance:
     - target: {fileID: 760756442874133158, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: 'markers.Array.data[0]'
       value: 
-      objectReference: {fileID: 1395513430}
+      objectReference: {fileID: 543133955}
     - target: {fileID: 760756442874133158, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: 'markers.Array.data[1]'
       value: 
-      objectReference: {fileID: 1769908919750303171}
+      objectReference: {fileID: 1245980068}
     - target: {fileID: 760756442874133158, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: 'markers.Array.data[2]'
       value: 
-      objectReference: {fileID: 543133955}
+      objectReference: {fileID: 1395513430}
     - target: {fileID: 760756442874133158, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: 'markers.Array.data[3]'
       value: 
-      objectReference: {fileID: 1245980068}
+      objectReference: {fileID: 1769908919750303171}
     - target: {fileID: 4090147646236954827, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24385,6 +24415,10 @@ PrefabInstance:
       value: 2202316003
       objectReference: {fileID: 0}
     - target: {fileID: 7429458874141336268, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429458874141336268, guid: fd94e82d203d5ce41a224a07bac7a288, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 2471154769
       objectReference: {fileID: 0}
@@ -24408,6 +24442,10 @@ PrefabInstance:
     - target: {fileID: 4648450804259245517, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 324497637
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648450804259245517, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5001659113420214896, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
       propertyPath: canvas
@@ -24535,6 +24573,10 @@ PrefabInstance:
       value: 2510499730
       objectReference: {fileID: 0}
     - target: {fileID: 5371878805418751145, guid: 0f545df70bb57894bb0c9be286775806, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371878805418751145, guid: 0f545df70bb57894bb0c9be286775806, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 3249085099
       objectReference: {fileID: 0}
@@ -24566,6 +24608,10 @@ PrefabInstance:
     - target: {fileID: 1216313225973599669, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3363254983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216313225973599669, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1220456762148408595, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_Name
@@ -24615,9 +24661,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6510583422294307276, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7221706392433953619, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4031453429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221706392433953619, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8561181238703442586, guid: 590aa3871e89ca94c8a6801454daf455, type: 3}
       propertyPath: m_Enabled
