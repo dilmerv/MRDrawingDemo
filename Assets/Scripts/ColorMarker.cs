@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Oculus.Interaction;
 using Unity.Netcode;
 using UnityEngine;
@@ -15,9 +16,7 @@ public class ColorMarker : NetworkBehaviour
     [SerializeField] private Color color = Color.red;
     [SerializeField] private float startLineWidth = 0.01f;
     [SerializeField] private float endLineWidth = 0.02f;
-    
     [SerializeField] private float grabOffsetDistance = 0.05f; // Distance to offset from controller
-    [SerializeField] private Vector3 grabOffsetDirection = Vector3.forward; // Direction to offset
     
     private GrabInteractable grabInteractable;
     private AudioSource drawingAudioSource;
@@ -34,11 +33,11 @@ public class ColorMarker : NetworkBehaviour
     private void Awake()
     {
         networkLinePositions = new NetworkList<Vector3>();
+        grabInteractable = GetComponent<GrabInteractable>();
     }
     
     private void OnValidate()
     {
-        grabInteractable = GetComponent<GrabInteractable>();
         var drawingCanvas = GameObject.Find("DrawingCanvas")?.transform;
         canvas = drawingCanvas?.transform;
         layersToInclude = LayerMask.GetMask("DrawingCanvas");
@@ -51,27 +50,25 @@ public class ColorMarker : NetworkBehaviour
         drawingAudioSource.loop = true;
         drawingAudioSource.clip = drawingAudioClip;
         
-        // Subscribe to grab events
         if (grabInteractable != null)
         {
-            grabInteractable.WhenSelectingInteractorAdded.Action += OnGrabbed;
-            grabInteractable.WhenSelectingInteractorRemoved.Action += OnReleased;
+            grabInteractable.WhenPointerEventRaised += OnPointerEventRaised;
         }
     }
     
-    private void OnGrabbed(GrabInteractor interactor)
+    private void OnPointerEventRaised(PointerEvent pointerEvent)
     {
-        markerGrabbed = true;
-        currentGrabbingController = interactor.gameObject.transform;
-        
-        // Align marker with controller direction and offset it
-        AlignMarkerWithController();
-    }
-    
-    private void OnReleased(GrabInteractor interactor)
-    {
-        markerGrabbed = false;
-        currentGrabbingController = null;
+        if(pointerEvent.Type == PointerEventType.Select)
+        {
+            markerGrabbed = true;
+            var grabInteractor = grabInteractable.Interactors.First();
+            currentGrabbingController = grabInteractor.gameObject.transform;
+        }
+        else if(pointerEvent.Type == PointerEventType.Unselect)
+        {
+            markerGrabbed = false;
+            currentGrabbingController = null;
+        }
     }
     
     private void AlignMarkerWithController()
@@ -89,23 +86,19 @@ public class ColorMarker : NetworkBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(controllerForward);
         
         // Apply position and rotation
+        Vector3 oldPosition = transform.position;
+        Quaternion oldRotation = transform.rotation;
+        
         transform.position = offsetPosition;
         transform.rotation = targetRotation;
     }
     
     void Update()
     {
-        // If grabbed, continuously update alignment
-        if (markerGrabbed && currentGrabbingController != null)
-        {
-            AlignMarkerWithController();
-        }
-        
         Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * brushRayDistance, Color.green);
         
-        if (markerGrabbed && 
-            Physics.Raycast(ray, out RaycastHit hit, brushRayDistance, layersToInclude))
+        if (markerGrabbed && Physics.Raycast(ray, out RaycastHit hit, brushRayDistance, layersToInclude))
         {
             Vector3 hitPoint = hit.point;
 
@@ -133,6 +126,15 @@ public class ColorMarker : NetworkBehaviour
         {
             drawing = false;
             if (drawingAudioSource.isPlaying) drawingAudioSource.Stop();
+        }
+    }
+
+    void LateUpdate()
+    {
+        // Run alignment in LateUpdate to override Meta SDK system changes
+        if (markerGrabbed && currentGrabbingController != null)
+        {
+            AlignMarkerWithController();   
         }
     }
     
@@ -209,8 +211,7 @@ public class ColorMarker : NetworkBehaviour
     {
         if (grabInteractable != null)
         {
-            grabInteractable.WhenSelectingInteractorAdded.Action -= OnGrabbed;
-            grabInteractable.WhenSelectingInteractorRemoved.Action -= OnReleased;
+            grabInteractable.WhenPointerEventRaised -= OnPointerEventRaised;
         }
     }
 }
