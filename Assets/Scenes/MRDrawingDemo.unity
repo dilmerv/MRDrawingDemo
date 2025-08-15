@@ -23886,6 +23886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 729039707558559818, guid: 3971863c058f8aa4587bd46f49bb1b10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1463369977880125410, guid: 3971863c058f8aa4587bd46f49bb1b10, type: 3}
       propertyPath: originalAreaTransform
       value: 
@@ -24003,6 +24007,10 @@ PrefabInstance:
       propertyPath: originalAreaTransform
       value: 
       objectReference: {fileID: 1354451289}
+    - target: {fileID: 7814470397760420908, guid: 11cfe111c10a39845bd142c2ce72b55e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24120,6 +24128,10 @@ PrefabInstance:
     - target: {fileID: 1533733104458898323, guid: 6ba98311072aed14bb00b89232b6415c, type: 3}
       propertyPath: m_Name
       value: ColorMarkerRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717699167594489483, guid: 6ba98311072aed14bb00b89232b6415c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2279145611356293820, guid: 6ba98311072aed14bb00b89232b6415c, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -24249,6 +24261,10 @@ PrefabInstance:
     - target: {fileID: 4648450804259245517, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 324497637
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133995126101897442, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5346865821028791614, guid: a64282b85ecf95944899dab6083e74b2, type: 3}
       propertyPath: m_LocalPosition.x
