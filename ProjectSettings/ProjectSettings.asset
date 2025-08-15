@@ -144,6 +144,9 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 11400000, guid: 9aa480242c4a50749b382457177daf31, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 912bceb332a806041ac8202ea7817d61, type: 2}
+  - {fileID: 11400000, guid: 19d3479ae27319044be822b1c22b1772, type: 2}
+  - {fileID: 7974475016244256101, guid: 0aa9daf79332f9e4e8c64fefcce9593a, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -875,11 +878,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 0958921b-66d3-4a20-a056-9ee2e0597575
+  cloudProjectId: 60d93fa4-8620-47dd-b9f2-0d362be8cca3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: MR Canvas Painting
-  organizationId: dilmerv_unity
+  projectName: MetaColocationDemos
+  organizationId: dilmer
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
