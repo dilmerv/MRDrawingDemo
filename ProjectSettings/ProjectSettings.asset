@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Meta
+  companyName: Dilmer Studios
   productName: MR Drawing
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -145,6 +145,9 @@ PlayerSettings:
   - {fileID: 11400000, guid: 9aa480242c4a50749b382457177daf31, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 912bceb332a806041ac8202ea7817d61, type: 2}
+  - {fileID: 11400000, guid: 19d3479ae27319044be822b1c22b1772, type: 2}
+  - {fileID: 7974475016244256101, guid: 0aa9daf79332f9e4e8c64fefcce9593a, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -166,7 +169,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.meta.mrdrawing
+    Android: com.dilmerstudios.mrdrawing
     Standalone: com.meta.mrdrawing
   buildNumber:
     Standalone: 0
@@ -268,8 +271,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: connect.keystore'
-  AndroidKeyaliasName: user
+  AndroidKeystoreName: '{inproject}: mrdrawingdemo.keystore'
+  AndroidKeyaliasName: mr drawing app
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -278,7 +281,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
