@@ -85,12 +85,10 @@ public class ColorMarker : NetworkBehaviour
         // Align marker with controller direction
         Quaternion targetRotation = Quaternion.LookRotation(controllerForward);
         
-        // Apply position and rotation
-        Vector3 oldPosition = transform.position;
-        Quaternion oldRotation = transform.rotation;
-        
         transform.position = offsetPosition;
-        transform.rotation = targetRotation;
+        
+        if(IsOwner)
+            transform.rotation = targetRotation;
     }
     
     void Update()
