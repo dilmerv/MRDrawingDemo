@@ -32,7 +32,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     private Pose? environmentPose;
     private EnvironmentRaycastHitStatus currentEnvHitStatus;
     private OVRSpatialAnchor spatialAnchor;
-    private bool toggleSelectionActive;
+    private bool visualizersEnabled;
 
     private IEnumerator Start()
     {
@@ -44,6 +44,8 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         }
         yield return null;
         enabled = true;
+        
+        AllowVisualizers(enable: visualizersEnabled);
     }
 
     public override void OnNetworkSpawn()
@@ -64,9 +66,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
     {
         if(!IsPanelSelectionAllowed())
         {
-            raycastVisualizationLine.enabled = false;
-            raycastVisualizationNormal.gameObject.SetActive(false);
-            panelGlow.SetActive(false);
+            AllowVisualizers(enable: false);
             return;
         }
             
@@ -100,8 +100,7 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
                     parent.SetPositionAndRotation(panel.position, panel.rotation);
                     spatialAnchor = parent.gameObject.AddComponent<OVRSpatialAnchor>();
                     panel.SetParent(parent);
-                }
-                
+                }   
             }
         }
         else
@@ -119,6 +118,13 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
         AnimatePanelPose();
     }
 
+    private void AllowVisualizers(bool enable = true)
+    {
+        raycastVisualizationLine.enabled = enable;
+        raycastVisualizationNormal.gameObject.SetActive(enable);
+        panelGlow.SetActive(enable);
+    }
+
     private bool IsPanelSelectionAllowed()
     {
 #if UNITY_EDITOR
@@ -126,13 +132,13 @@ public class DrawingBoardPanelPlacement : SingletonNetwork<DrawingBoardPanelPlac
 #else
         if (OVRInput.GetDown(selectionToggleButton))
         {
-            toggleSelectionActive = !toggleSelectionActive;
+            visualizersEnabled = !visualizersEnabled;
         }
         
         bool isUsingHands = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
         return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
                || isUsingHands
-               || toggleSelectionActive);
+               || !visualizersEnabled);
 #endif
     }
 

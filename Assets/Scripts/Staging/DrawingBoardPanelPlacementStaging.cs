@@ -14,7 +14,7 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
     [SerializeField] private OVRInput.RawAxis2D moveAxis = OVRInput.RawAxis2D.RThumbstick;
 #pragma warning disable CS0414
     [SerializeField] private OVRInput.RawButton selectionToggleButton = OVRInput.RawButton.B;
-#pragma warning disable CS0414
+#pragma warning restore CS0414
     [SerializeField] private Transform panel;
     [SerializeField] private GameObject panelGlow;
     [SerializeField] private LineRenderer raycastVisualizationLine;
@@ -32,7 +32,7 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
     private Pose? environmentPose;
     private EnvironmentRaycastHitStatus currentEnvHitStatus;
     private OVRSpatialAnchor spatialAnchor;
-    private bool toggleSelectionActive;
+    private bool visualizersEnabled;
     
     private IEnumerator Start()
     {
@@ -50,15 +50,15 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
         spatialAnchor = new GameObject(nameof(OVRSpatialAnchor)).AddComponent<OVRSpatialAnchor>();
         spatialAnchor.transform.SetPositionAndRotation(panel.position, panel.rotation);
         panel.SetParent(spatialAnchor.transform);
+
+        AllowVisualizers(enable: visualizersEnabled);
     }
     
     private void Update()
     {
         if(!IsPanelSelectionAllowed())
         {
-            raycastVisualizationLine.enabled = false;
-            raycastVisualizationNormal.gameObject.SetActive(false);
-            panelGlow.SetActive(false);
+            AllowVisualizers(enable: false);
             return;
         }
             
@@ -93,8 +93,6 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
                     spatialAnchor = parent.gameObject.AddComponent<OVRSpatialAnchor>();
                     panel.SetParent(parent);
                 }
-                
-                onPanelGrabbedEnded?.Invoke();
             }
         }
         else
@@ -111,7 +109,14 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
         }
         AnimatePanelPose();
     }
-
+    
+    private void AllowVisualizers(bool enable = true)
+    {
+        raycastVisualizationLine.enabled = enable;
+        raycastVisualizationNormal.gameObject.SetActive(enable);
+        panelGlow.SetActive(enable);
+    }
+    
     private bool IsPanelSelectionAllowed()
     {
 #if UNITY_EDITOR
@@ -119,13 +124,13 @@ public class DrawingBoardPanelPlacementStaging : Singleton<DrawingBoardPanelPlac
 #else
         if (OVRInput.GetDown(selectionToggleButton))
         {
-            toggleSelectionActive = !toggleSelectionActive;
+            visualizersEnabled = !visualizersEnabled;
         }
         
         bool isUsingHands = (OVRInput.GetActiveController() & OVRInput.Controller.Hands) != 0;
         return !(DrawingToolsManager.Instance && DrawingToolsManager.Instance.IsAnyToolSelected()
                || isUsingHands
-               || toggleSelectionActive);
+               || !visualizersEnabled);
 #endif
     }
 
